@@ -172,3 +172,18 @@ func RegisterFg(name string, fg Color, bold bool) Colorizer {
 func RegisterFgBg(name string, fg, bg Color, bold bool) Colorizer {
 	return RegisterColorizer(name, func(s string) string { return fgBgLines(s, fg, bg, bold) })
 }
+
+// splitKeepTrail splits s by '\n' and preserves a single trailing newline (LF or CRLF) if present.
+// Returns the lines (without the trailing newline) and the exact trailing newline sequence.
+func splitKeepTrail(s string) (lines []string, trailing string) {
+	// Preserve exactly one trailing newline (LF or CRLF)
+	if strings.HasSuffix(s, "\r\n") {
+		trailing = "\r\n"
+		s = strings.TrimSuffix(s, "\r\n")
+	} else if strings.HasSuffix(s, "\n") {
+		trailing = "\n"
+		s = strings.TrimSuffix(s, "\n")
+	}
+	// Split remaining content on '\n' (handles CRLF already stripped above)
+	return strings.Split(s, "\n"), trailing
+}
