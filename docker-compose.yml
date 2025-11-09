@@ -1,0 +1,13 @@
+services:
+  colors:
+    build:
+      context: .
+      dockerfile: ./build/Dockerfile
+    image: logger-colors:dev
+    tty: true           # allocate a TTY so ANSI renders nicely
+    stdin_open: true    # keeps STDIN open (handy during dev)
+    environment:
+      - TERM=xterm-256color
+      - COLORTERM=truecolor
+      # - FORCE_COLOR=1   # uncomment if your code checks this to force color
+    command: ["/colors"]
