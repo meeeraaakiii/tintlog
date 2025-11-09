@@ -6,8 +6,9 @@ import (
 
 func main() {
 	// logger.InitializeConfig(nil)
-	logger.InitializeConfig(&logger.Config{})
-	logger.Log(logger.Color, "\n\n\nRegular color text %s, more regular text\nmore text: %s", "text printed with logger.Color\nstillsame logger.Color", "more color text\nnew line colored")
-	logger.Log(logger.RedText, "error: %s\n%s", "something", "went wrong")
-	logger.Log(logger.OnSoftYellow, "note: retry\nscheduled: %s", "soft yellow bg\nnewline with bg")
+	useTid := true
+	logger.InitializeConfig(&logger.Config{UseTid: &useTid})
+	logger.Log(logger.Info, logger.Color, "\n\n\nRegular color text %s, more regular text\nmore text: %s", "text printed with logger.Color\nstillsame logger.Color", "more color text\nnew line colored")
+	logger.Log(logger.Info, logger.RedText, "error: %s\n%s", "something", "went wrong")
+	logger.Log(logger.Info, logger.OnSoftYellow, "note: retry\nscheduled: %s", "soft yellow bg\nnewline with bg")
 }
