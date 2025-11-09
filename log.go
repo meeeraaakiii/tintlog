@@ -92,11 +92,7 @@ func Log(level LogLevel, colorize Colorizer, format string, args ...any) {
 	coloredArgs := make([]any, len(args))
 	for i, a := range args {
 		pretty := prettyForStderr(a)
-		if colorize.Fn != nil {
-			coloredArgs[i] = colorize.Fn(pretty)
-		} else {
-			coloredArgs[i] = pretty
-		}
+		coloredArgs[i] = colorize.Apply(pretty)
 	}
 
 	bodyColored := fmt.Sprintf(format, coloredArgs...)
