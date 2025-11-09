@@ -77,14 +77,3 @@ func jsonOrFieldName(sf reflect.StructField) string {
 	}
 	return tag
 }
-
-// AnyZeroOrEmpty returns true if ANY of the inputs is zero or an empty slice.
-// Works with strings, []T, pointers (including nil), etc.
-func AnyZeroOrEmpty(values ...any) bool {
-	for _, value := range values {
-		if IsZeroOrEmpty(reflect.ValueOf(value)) { // uses the thin wrapper shown earlier
-			return true
-		}
-	}
-	return false
-}
