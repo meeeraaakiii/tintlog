@@ -13,6 +13,8 @@ import (
 	"sync"
 	"time"
 	"unicode/utf8"
+
+	"logger/color"
 )
 
 var (
@@ -87,7 +89,7 @@ func prettyForStderr(a any) string {
 // Log prints time (if TimeFormat != ""), [Level], optional [tid], then the message.
 // Prints to stderr only when Cfg.LogLevel >= level, but ALWAYS writes JSONL to file
 // if LoggerFilePath != "" (colorless), storing only color NAME + original format/args.
-func Log(level LogLevel, colorize Colorizer, format string, args ...any) {
+func Log(level LogLevel, colorize color.Colorizer, format string, args ...any) {
 	// ----- colored args for stderr -----
 	coloredArgs := make([]any, len(args))
 	for i, a := range args {

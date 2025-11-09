@@ -1,5 +1,7 @@
 package logger
 
+import "logger/color"
+
 // user config set through a config file (logger section)
 type Config struct {
 	// log level to print to stderr, don't print any message with log level below this one
@@ -24,7 +26,7 @@ type Config struct {
 	LogFileFormat string `json:"log_file_format,omitempty"`
 
 	// colorizer for the timestamp. Not JSON-serializable; runtime-only.
-	LogTimeColor Colorizer `json:"-"`
+	LogTimeColor color.Colorizer `json:"-"`
 }
 
 var Cfg Config = defaultConfig() // this one we use to access config values from anywhere
@@ -38,17 +40,17 @@ func defaultConfig() Config {
 		UseTid:             &useTid,
 		TimeFormat:         "2006/Jan/02 15:04:05",
 		LogFileFormat:      "02_Jan_2006_15_04_05.jsonl",
-		LogTimeColor:       DimGrayText, // soft “dim white/gray”
+		LogTimeColor:       color.DimGrayText, // soft “dim white/gray”
 	}
 }
 
 func InitializeConfig(userConfig *Config) {
 	// If not provided - just use defaultConfig
 	if userConfig == nil {
-		Log(Info, GreenText, "%s config is %s, keeping %s", "logger", "not provided", "default logger config")
+		Log(Info, color.GreenText, "%s config is %s, keeping %s", "logger", "not provided", "default logger config")
 		return
 	}
-	Log(Info, GreenText, "%s config was %s, using %s", "logger", "provided", "user config")
+	Log(Info, color.GreenText, "%s config was %s, using %s", "logger", "provided", "user config")
 	// If local Config is provided - use it
 	Cfg = *userConfig
 
@@ -56,19 +58,19 @@ func InitializeConfig(userConfig *Config) {
 	defaultConfig := defaultConfig()
 	ApplyDefaults(&Cfg, defaultConfig, func(field string, defVal any) {
 		Log(
-			Info, GreenText,
+			Info, color.GreenText,
 			"%s field is %s in %s configuration. Using default value: %v",
 			field, "missing", "logger", prettyForStderr(defVal),
 		)
 	})
 
-	Log(Info, GreenText, "%s: %s", "Effective config", Cfg)
+	Log(Info, color.GreenText, "%s: %s", "Effective config", Cfg)
 
 	if Cfg.LogDir != "" {
 		// this function will change Cfg.LoggerFilePath and Cfg.LoggerFile
 		err, errMsg := OpenLoggerFile(Cfg.LogDir)
 		if err != nil {
-			Log(Info, RedText, "Err: '%s', errMsg: '%s'", err, errMsg)
+			Log(Info, color.RedText, "Err: '%s', errMsg: '%s'", err, errMsg)
 		}
 	}
 }

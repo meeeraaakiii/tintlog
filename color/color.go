@@ -1,5 +1,5 @@
 // color.go
-package logger
+package color
 
 import (
 	"fmt"
