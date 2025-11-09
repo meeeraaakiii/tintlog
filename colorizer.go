@@ -10,19 +10,14 @@ import (
 )
 
 var (
-	out io.Writer = os.Stdout
-	mu  sync.Mutex
+	LoggerOutput      io.Writer = os.Stderr
+	LoggerOutputMutex sync.Mutex
 )
 
 // Colorizer post-processes a fully formatted message (handles multiline safely).
 type Colorizer func(string) string
 
-// SetOutput lets you redirect logs (files, buffers, etc.).
-func SetOutput(w io.Writer) { if w != nil { out = w } }
-
 // Log formats and writes the message, coloring only the args via colorize.
-// Example:
-//   logger.Log(logger.Color, "Regular color text %s", "text printed with logger.Color\nstillsame logger.Color")
 func Log(colorize Colorizer, format string, args ...any) {
 	// Colorize arguments only (strings, errors, and fmt.Stringer)
 	if colorize != nil {
@@ -46,7 +41,7 @@ func Log(colorize Colorizer, format string, args ...any) {
 		msg += "\n"
 	}
 
-	mu.Lock()
-	_, _ = io.WriteString(out, msg)
-	mu.Unlock()
+	LoggerOutputMutex.Lock()
+	_, _ = io.WriteString(LoggerOutput, msg)
+	LoggerOutputMutex.Unlock()
 }

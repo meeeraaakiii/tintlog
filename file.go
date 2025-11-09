@@ -5,6 +5,8 @@ import (
 	"sync"
 )
 
-var LoggerFile *os.File
-var LoggerFilePath string
-var LoggerFileMutex sync.Mutex
+var (
+	LoggerFile *os.File
+	LoggerFilePath string
+	LoggerFileMutex sync.Mutex
+)
