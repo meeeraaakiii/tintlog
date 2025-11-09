@@ -1,7 +1,6 @@
 package logger
 
 import (
-	"fmt"
 	"reflect"
 	"strings"
 )
@@ -88,33 +87,4 @@ func AnyZeroOrEmpty(values ...any) bool {
 		}
 	}
 	return false
-}
-
-func PrettyValue(val any) string {
-	if val == nil {
-		return "nil"
-	}
-	rv := reflect.ValueOf(val)
-	switch rv.Kind() {
-	case reflect.String:
-		// "": prints as ""
-		return fmt.Sprintf("%q", rv.String())
-
-	case reflect.Slice, reflect.Array:
-		// Pretty for []string: [a, b, c]
-		if s, ok := val.([]string); ok {
-			return "[" + strings.Join(s, ", ") + "]"
-		}
-		// Fallback (no added quotes around the whole thing)
-		return fmt.Sprintf("%v", val)
-
-	case reflect.Pointer:
-		if rv.IsNil() {
-			return "nil"
-		}
-		return PrettyValue(rv.Elem().Interface())
-
-	default:
-		return fmt.Sprintf("%v", val)
-	}
 }
