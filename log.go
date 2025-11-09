@@ -18,12 +18,6 @@ var (
 	LoggerOutputMutex sync.Mutex
 )
 
-// soft caps to keep stderr snappy
-const (
-	maxPrettyBytes = 4096 // cap pretty JSON and text blobs
-	maxHexPreview  = 32   // bytes to hex-preview for non-UTF8 []byte
-)
-
 // Log prints time (if TimeFormat != ""), [Level], optional [tid], then the message.
 // Prints to stderr only when Cfg.LogLevel >= level, but ALWAYS writes JSONL to file
 // if LoggerFilePath != "" (colorless), storing only color NAME + original format/args.

@@ -10,6 +10,12 @@ import (
 	"unicode/utf8"
 )
 
+// soft caps to keep stderr snappy
+const (
+	maxPrettyBytes = 4096 // cap pretty JSON and text blobs
+	maxHexPreview  = 32   // bytes to hex-preview for non-UTF8 []byte
+)
+
 func truncate(s string, max int) string {
 	if max <= 0 || len(s) <= max {
 		return s
