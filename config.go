@@ -60,7 +60,7 @@ func InitializeConfig(userConfig *Config) {
 		Log(
 			Info, color.Green,
 			"%s field is %s in %s configuration. Using default value: %v",
-			field, "missing", "logger", prettyForStderr(defVal),
+			field, "missing", "logger", PrettyForStderr(defVal),
 		)
 	})
 

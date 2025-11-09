@@ -32,7 +32,7 @@ func Log(level LogLevel, colorize color.Colorizer, format string, args ...any) {
 	// ----- colored args for stderr -----
 	coloredArgs := make([]any, len(args))
 	for i, a := range args {
-		pretty := prettyForStderr(a)
+		pretty := PrettyForStderr(a)
 		coloredArgs[i] = colorize.Apply(pretty)
 	}
 

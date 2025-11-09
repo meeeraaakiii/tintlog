@@ -17,7 +17,7 @@ func truncate(s string, max int) string {
 	return s[:max] + "…"
 }
 
-func prettyForStderr(a any) string {
+func PrettyForStderr(a any) string {
 	// Fast path for common string-ish
 	switch v := a.(type) {
 	case string:

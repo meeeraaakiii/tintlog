@@ -137,19 +137,18 @@ func pickColorizer(name string) color.Colorizer {
 	return color.Colorizers["NoColor"]
 }
 
-
 func printLogLine(logLine logger.LogLine) {
 	// choose colors
-	timeClr  := logger.Cfg.LogTimeColor // e.g. "Gray" or "#8899aa"
-	levelClr := pickColorizer(logLine.Color)           // e.g. "Green", "RedBoldBackground"
+	timeColorizer  := logger.Cfg.LogTimeColor // e.g. "Gray" or "#8899aa"
+	logLineColorizer := pickColorizer(logLine.Color)           // e.g. "Green", "RedBoldBackground"
 
 	// build fields
-	timeStr  := timeClr.Apply(logLine.Time.Format(logger.Cfg.TimeFormat))
-	levelStr := levelClr.Apply(logLine.Level.String())
+	timeStr  := timeColorizer.Apply(logLine.Time.Format(logger.Cfg.TimeFormat))
+	levelStr := logLineColorizer.Apply(logLine.Level.String())
 
 	tidPart := ""
 	if logLine.TID > 0 { // NOTE: field is TID (not TId)
-		tidPart = "[" + levelClr.Apply(strconv.Itoa(logLine.TID)) + "]"
+		tidPart = "[" + logLineColorizer.Apply(strconv.Itoa(logLine.TID)) + "]"
 	}
 
 	// render message (use Format+Args if provided)
@@ -157,8 +156,15 @@ func printLogLine(logLine logger.LogLine) {
 	if strings.TrimSpace(msg) == "" {
 		msg = "%v"
 	}
+
+	// color the arguments
+	var coloredArgs []any
 	if len(logLine.Args) > 0 {
-		msg = fmt.Sprintf(msg, logLine.Args...)
+		for _, arg := range logLine.Args {
+			coloredArg := logger.PrettyForStderr(arg)
+			coloredArgs = append(coloredArgs, logLineColorizer.Apply(coloredArg))
+		}
+		msg = fmt.Sprintf(msg, coloredArgs...)
 	}
 
 	// final line
