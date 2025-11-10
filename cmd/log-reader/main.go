@@ -14,8 +14,7 @@ import (
 	"time"
 
 	"github.com/meeeraaakiii/go-tintlog/color"
-
-	"github.com/meeeraaakiii/go-tintlog"
+	"github.com/meeeraaakiii/go-tintlog/logger"
 )
 
 func main() {
