@@ -17,11 +17,13 @@ var (
 	LoggerOutput      io.Writer = os.Stderr
 	LoggerOutputMutex sync.Mutex
 )
-
+func Log(level LogLevel, colorize palette.Colorizer, format string, args ...any) {
+	LogBool(level, colorize, true, format, args...)
+}
 // Log prints time (if TimeFormat != ""), [Level], optional [tid], then the message.
 // Prints to stderr only when Cfg.LogLevel >= level, but ALWAYS writes JSONL to file
 // if LoggerFilePath != "" (colorless), storing only color NAME + original format/args.
-func Log(level LogLevel, colorize palette.Colorizer, format string, args ...any) {
+func LogBool(level LogLevel, colorize palette.Colorizer, newLine bool, format string, args ...any) {
 	// ----- colored args for stderr -----
 	coloredArgs := make([]any, len(args))
 	for i, a := range args {
@@ -29,8 +31,9 @@ func Log(level LogLevel, colorize palette.Colorizer, format string, args ...any)
 		coloredArgs[i] = colorize.Apply(pretty)
 	}
 
+	
 	bodyColored := fmt.Sprintf(format, coloredArgs...)
-	if !strings.HasSuffix(bodyColored, "\n") {
+	if newLine && !strings.HasSuffix(bodyColored, "\n") {
 		bodyColored += "\n"
 	}
 
