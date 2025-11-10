@@ -1,5 +1,5 @@
 // logger/logr.go
-package logr
+package tl
 
 import (
 	"fmt"

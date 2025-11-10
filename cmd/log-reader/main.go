@@ -22,7 +22,7 @@ func main() {
 	logLevel := flag.Int("level", 99, "Log level. Only print messages with log level <= this.")
 	startTimeStr := flag.String("start", "0000/Jan/01 00:00:00", "Start time in --time-format format. Keep empty to read from the beginning of the file.")
 	endTimeStr := flag.String("end", "9999/Dec/31 23:59:59", "End time in --time-format format. Keep empty to read to the end of the file.")
-	timeFormat := flag.String("time-format", logr.Cfg.TimeFormat, "Time format to use for --start and --end. Default is the same as default logger package time format.")
+	timeFormat := flag.String("time-format", tl.Cfg.TimeFormat, "Time format to use for --start and --end. Default is the same as default logger package time format.")
 	tail := flag.Int("tail", -1, "Number of lines to show with --tail.")
 	flag.Parse()
 
@@ -45,9 +45,9 @@ func main() {
 	}
 
 	// Read file with combined logic
-	err, errMsg := readLogFile(*logFile, logr.LogLevel(*logLevel), startTime, endTime, *tail)
+	err, errMsg := readLogFile(*logFile, tl.LogLevel(*logLevel), startTime, endTime, *tail)
 	if err != nil {
-		logr.Log(logr.Info, color.Red, "Err: '%s', errMsg: '%s'", err, errMsg)
+		tl.Log(tl.Info, color.Red, "Err: '%s', errMsg: '%s'", err, errMsg)
 	}
 }
 
@@ -59,7 +59,7 @@ and if its logging level is below or equal to --level.
 If conditions are satisfied - print this message using fmt
 including all other parts of LogLine.
 */
-func readLogFile(logFile string, logLevel logr.LogLevel, startTime, endTime time.Time, tailCount int) (err error, errMsg string) {
+func readLogFile(logFile string, logLevel tl.LogLevel, startTime, endTime time.Time, tailCount int) (err error, errMsg string) {
 	// Open the file
 	file, err := os.Open(logFile)
 	if err != nil {
@@ -96,8 +96,8 @@ func readLogFile(logFile string, logLevel logr.LogLevel, startTime, endTime time
 	return nil, ""
 }
 
-func processLogLine(logLineBytes []byte, logLevel logr.LogLevel, startTime, endTime time.Time) (err error, errMsg string) {
-	var logLine logr.LogLine
+func processLogLine(logLineBytes []byte, logLevel tl.LogLevel, startTime, endTime time.Time) (err error, errMsg string) {
+	var logLine tl.LogLine
 	// Unmarshal the JSON into the struct
 	err = json.Unmarshal(logLineBytes, &logLine)
 	if err != nil {
@@ -137,13 +137,13 @@ func pickColorizer(name string) color.Colorizer {
 	return color.Colorizers["NoColor"]
 }
 
-func printLogLine(logLine logr.LogLine) {
+func printLogLine(logLine tl.LogLine) {
 	// choose colors
-	timeColorizer := logr.Cfg.LogTimeColor           // e.g. "Gray" or "#8899aa"
+	timeColorizer := tl.Cfg.LogTimeColor           // e.g. "Gray" or "#8899aa"
 	logLineColorizer := pickColorizer(logLine.Color) // e.g. "Green", "RedBoldBackground"
 
 	// build fields
-	timeStr := timeColorizer.Apply(logLine.Time.Format(logr.Cfg.TimeFormat))
+	timeStr := timeColorizer.Apply(logLine.Time.Format(tl.Cfg.TimeFormat))
 	levelStr := logLineColorizer.Apply(logLine.Level.String())
 
 	tidPart := ""
@@ -161,7 +161,7 @@ func printLogLine(logLine logr.LogLine) {
 	var coloredArgs []any
 	if len(logLine.Args) > 0 {
 		for _, arg := range logLine.Args {
-			coloredArg := logr.PrettyForStderr(arg)
+			coloredArg := tl.PrettyForStderr(arg)
 			coloredArgs = append(coloredArgs, logLineColorizer.Apply(coloredArg))
 		}
 		msg = fmt.Sprintf(msg, coloredArgs...)
