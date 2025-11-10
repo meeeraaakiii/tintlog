@@ -44,7 +44,7 @@ func defaultConfig() Config {
 		UseTid:             &useTid,
 		TimeFormat:         "2006/Jan/02 15:04:05",
 		LogFileFormat:      "02_Jan_2006_15_04_05.jsonl",
-		LogTimeColor:       palette.DimGray, // soft “dim white/gray”
+		LogTimeColor:       palette.GrayDim, // soft “dim white/gray”
 	}
 }
 
@@ -67,7 +67,7 @@ func InitializeConfig(userConfig *Config) {
 
 	// use user config after applying defaults
 	Cfg = *userConfig
-	Log(Info, palette.DimGreen, "%s: %s", "Effective config", Cfg)
+	Log(Info, palette.GreenDim, "%s: %s", "Effective config", Cfg)
 
 	if Cfg.LogDir != "" {
 		// this function will change Cfg.LoggerFilePath and Cfg.LoggerFile

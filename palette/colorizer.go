@@ -84,24 +84,24 @@ var Colorizers = map[string]Colorizer{
 	"Gray":   FgColorizer("Gray", GrayColor, false),
 
 	// Bright tints
-	"BrightRed":    FgColorizer("BrightRed", BrightRedColor, false),
-	"BrightOrange": FgColorizer("BrightOrange", BrightOrangeColor, false),
-	"BrightYellow": FgColorizer("BrightYellow", BrightYellowColor, false),
-	"BrightGreen":  FgColorizer("BrightGreen", BrightGreenColor, false),
-	"BrightCyan":   FgColorizer("BrightCyan", BrightCyanColor, false),
-	"BrightBlue":   FgColorizer("BrightBlue", BrightBlueColor, false),
-	"BrightPurple": FgColorizer("BrightPurple", BrightPurpleColor, false),
-	"BrightGray":   FgColorizer("BrightGray", BrightGrayColor, false),
+	"RedBright":    FgColorizer("RedBright", BrightRedColor, false),
+	"OrangeBright": FgColorizer("OrangeBright", BrightOrangeColor, false),
+	"YellowBright": FgColorizer("YellowBright", BrightYellowColor, false),
+	"GreenBright":  FgColorizer("GreenBright", BrightGreenColor, false),
+	"CyanBright":   FgColorizer("CyanBright", BrightCyanColor, false),
+	"BlueBright":   FgColorizer("BlueBright", BrightBlueColor, false),
+	"PurpleBright": FgColorizer("PurpleBright", BrightPurpleColor, false),
+	"GrayBright":   FgColorizer("GrayBright", BrightGrayColor, false),
 
 	// Dim shades
-	"DimRed":    FgColorizer("DimRed", DimRedColor, false),
-	"DimOrange": FgColorizer("DimOrange", DimOrangeColor, false),
-	"DimYellow": FgColorizer("DimYellow", DimYellowColor, false),
-	"DimGreen":  FgColorizer("DimGreen", DimGreenColor, false),
-	"DimCyan":   FgColorizer("DimCyan", DimCyanColor, false),
-	"DimBlue":   FgColorizer("DimBlue", DimBlueColor, false),
-	"DimPurple": FgColorizer("DimPurple", DimPurpleColor, false),
-	"DimGray":   FgColorizer("DimGray", DimGrayColor, false),
+	"RedDim":    FgColorizer("RedDim", DimRedColor, false),
+	"OrangeDim": FgColorizer("OrangeDim", DimOrangeColor, false),
+	"YellowDim": FgColorizer("YellowDim", DimYellowColor, false),
+	"GreenDim":  FgColorizer("GreenDim", DimGreenColor, false),
+	"CyanDim":   FgColorizer("CyanDim", DimCyanColor, false),
+	"BlueDim":   FgColorizer("BlueDim", DimBlueColor, false),
+	"PurpleDim": FgColorizer("PurpleDim", DimPurpleColor, false),
+	"GrayDim":   FgColorizer("GrayDim", DimGrayColor, false),
 
 	// No color
 	"NoColor": {Name: "NoColor", Fn: nil},
@@ -117,24 +117,24 @@ var Colorizers = map[string]Colorizer{
 	"GrayBold":   FgColorizer("GrayBold", GrayColor, true),
 
 	// --- Bold counterparts (Bright tints) ---
-	"BrightRedBold":    FgColorizer("BrightRedBold", BrightRedColor, true),
-	"BrightOrangeBold": FgColorizer("BrightOrangeBold", BrightOrangeColor, true),
-	"BrightYellowBold": FgColorizer("BrightYellowBold", BrightYellowColor, true),
-	"BrightGreenBold":  FgColorizer("BrightGreenBold", BrightGreenColor, true),
-	"BrightCyanBold":   FgColorizer("BrightCyanBold", BrightCyanColor, true),
-	"BrightBlueBold":   FgColorizer("BrightBlueBold", BrightBlueColor, true),
-	"BrightPurpleBold": FgColorizer("BrightPurpleBold", BrightPurpleColor, true),
-	"BrightGrayBold":   FgColorizer("BrightGrayBold", BrightGrayColor, true),
+	"RedBrightBold":    FgColorizer("RedBrightBold", BrightRedColor, true),
+	"OrangeBrightBold": FgColorizer("OrangeBrightBold", BrightOrangeColor, true),
+	"YellowBrightBold": FgColorizer("YellowBrightBold", BrightYellowColor, true),
+	"GreenBrightBold":  FgColorizer("GreenBrightBold", BrightGreenColor, true),
+	"CyanBrightBold":   FgColorizer("CyanBrightBold", BrightCyanColor, true),
+	"BlueBrightBold":   FgColorizer("BlueBrightBold", BrightBlueColor, true),
+	"PurpleBrightBold": FgColorizer("PurpleBrightBold", BrightPurpleColor, true),
+	"GrayBrightBold":   FgColorizer("GrayBrightBold", BrightGrayColor, true),
 
 	// --- Bold counterparts (Dim shades) ---
-	"DimRedBold":    FgColorizer("DimRedBold", DimRedColor, true),
-	"DimOrangeBold": FgColorizer("DimOrangeBold", DimOrangeColor, true),
-	"DimYellowBold": FgColorizer("DimYellowBold", DimYellowColor, true),
-	"DimGreenBold":  FgColorizer("DimGreenBold", DimGreenColor, true),
-	"DimCyanBold":   FgColorizer("DimCyanBold", DimCyanColor, true),
-	"DimBlueBold":   FgColorizer("DimBlueBold", DimBlueColor, true),
-	"DimPurpleBold": FgColorizer("DimPurpleBold", DimPurpleColor, true),
-	"DimGrayBold":   FgColorizer("DimGrayBold", DimGrayColor, true),
+	"RedDimBold":    FgColorizer("RedDimBold", DimRedColor, true),
+	"OrangeDimBold": FgColorizer("OrangeDimBold", DimOrangeColor, true),
+	"YellowDimBold": FgColorizer("YellowDimBold", DimYellowColor, true),
+	"GreenDimBold":  FgColorizer("GreenDimBold", DimGreenColor, true),
+	"CyanDimBold":   FgColorizer("CyanDimBold", DimCyanColor, true),
+	"BlueDimBold":   FgColorizer("BlueDimBold", DimBlueColor, true),
+	"PurpleDimBold": FgColorizer("PurpleDimBold", DimPurpleColor, true),
+	"GrayDimBold":   FgColorizer("GrayDimBold", DimGrayColor, true),
 
 	// --- Background variants (Base hues; black fg on color bg) ---
 	"RedBackground":    FgBgColorizer("RedBackground", BlackColor, RedColor, false),
@@ -170,24 +170,24 @@ var (
 	Gray   = Colorizers["Gray"]
 
 	// Bright tints
-	BrightRed    = Colorizers["BrightRed"]
-	BrightOrange = Colorizers["BrightOrange"]
-	BrightYellow = Colorizers["BrightYellow"]
-	BrightGreen  = Colorizers["BrightGreen"]
-	BrightCyan   = Colorizers["BrightCyan"]
-	BrightBlue   = Colorizers["BrightBlue"]
-	BrightPurple = Colorizers["BrightPurple"]
-	BrightGray   = Colorizers["BrightGray"]
+	RedBright    = Colorizers["RedBright"]
+	OrangeBright = Colorizers["OrangeBright"]
+	YellowBright = Colorizers["YellowBright"]
+	GreenBright  = Colorizers["GreenBright"]
+	CyanBright   = Colorizers["CyanBright"]
+	BlueBright   = Colorizers["BlueBright"]
+	PurpleBright = Colorizers["PurpleBright"]
+	GrayBright   = Colorizers["GrayBright"]
 
 	// Dim shades
-	DimRed    = Colorizers["DimRed"]
-	DimOrange = Colorizers["DimOrange"]
-	DimYellow = Colorizers["DimYellow"]
-	DimGreen  = Colorizers["DimGreen"]
-	DimCyan   = Colorizers["DimCyan"]
-	DimBlue   = Colorizers["DimBlue"]
-	DimPurple = Colorizers["DimPurple"]
-	DimGray   = Colorizers["DimGray"]
+	RedDim    = Colorizers["RedDim"]
+	OrangeDim = Colorizers["OrangeDim"]
+	YellowDim = Colorizers["YellowDim"]
+	GreenDim  = Colorizers["GreenDim"]
+	CyanDim   = Colorizers["CyanDim"]
+	BlueDim   = Colorizers["BlueDim"]
+	PurpleDim = Colorizers["PurpleDim"]
+	GrayDim   = Colorizers["GrayDim"]
 
 	// No color
 	NoColor = Colorizers["NoColor"]
@@ -203,24 +203,24 @@ var (
 	GrayBold   = Colorizers["GrayBold"]
 
 	// Bold counterparts (Bright)
-	BrightRedBold    = Colorizers["BrightRedBold"]
-	BrightOrangeBold = Colorizers["BrightOrangeBold"]
-	BrightYellowBold = Colorizers["BrightYellowBold"]
-	BrightGreenBold  = Colorizers["BrightGreenBold"]
-	BrightCyanBold   = Colorizers["BrightCyanBold"]
-	BrightBlueBold   = Colorizers["BrightBlueBold"]
-	BrightPurpleBold = Colorizers["BrightPurpleBold"]
-	BrightGrayBold   = Colorizers["BrightGrayBold"]
+	RedBrightBold    = Colorizers["RedBrightBold"]
+	OrangeBrightBold = Colorizers["OrangeBrightBold"]
+	YellowBrightBold = Colorizers["YellowBrightBold"]
+	GreenBrightBold  = Colorizers["GreenBrightBold"]
+	CyanBrightBold   = Colorizers["CyanBrightBold"]
+	BlueBrightBold   = Colorizers["BlueBrightBold"]
+	PurpleBrightBold = Colorizers["PurpleBrightBold"]
+	GrayBrightBold   = Colorizers["GrayBrightBold"]
 
 	// Bold counterparts (Dim)
-	DimRedBold    = Colorizers["DimRedBold"]
-	DimOrangeBold = Colorizers["DimOrangeBold"]
-	DimYellowBold = Colorizers["DimYellowBold"]
-	DimGreenBold  = Colorizers["DimGreenBold"]
-	DimCyanBold   = Colorizers["DimCyanBold"]
-	DimBlueBold   = Colorizers["DimBlueBold"]
-	DimPurpleBold = Colorizers["DimPurpleBold"]
-	DimGrayBold   = Colorizers["DimGrayBold"]
+	RedDimBold    = Colorizers["RedDimBold"]
+	OrangeDimBold = Colorizers["OrangeDimBold"]
+	YellowDimBold = Colorizers["YellowDimBold"]
+	GreenDimBold  = Colorizers["GreenDimBold"]
+	CyanDimBold   = Colorizers["CyanDimBold"]
+	BlueDimBold   = Colorizers["BlueDimBold"]
+	PurpleDimBold = Colorizers["PurpleDimBold"]
+	GrayDimBold   = Colorizers["GrayDimBold"]
 
 	// Background variants (Base; black fg on color bg)
 	RedBackground    = Colorizers["RedBackground"]
