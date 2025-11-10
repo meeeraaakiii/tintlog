@@ -28,8 +28,7 @@ type LogLine struct {
 
 /*
 This will initiate json logging file with name like Cfg.LogFileFormat and contents like those:
-{"t": timestamp, "tid": yourthreadid, "l": loglevel, "msg": "log message with \033[0;32mcolor\033[0m"}
-{"t": timestamp, "tid": yourthreadid, "l": loglevel, "msg": "another log message with \033[0;32mcolor\033[0m"}
+{"time":"2025-11-10T08:17:21.114224236-05:00","tid":1,"level":50,"color":"RedBoldBackground","format":"error: %s\n%s","args":["argument","another arg"]}
 
 This function is only called if an option to save to logger file is specified when initializing logr.
 

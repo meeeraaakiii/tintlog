@@ -17,11 +17,6 @@ type Config struct {
 	// specify a log directory if you want to duplicate all logs into a file by default
 	// in your programs provide a way to override this with --log-dir flag
 	LogDir string `json:"log_dir,omitempty"`
-	// environment variable name that will allow us to identify program instance
-	// for example HOSTNAME can be used inside container to get container id
-	// if this variable is set and os.Getenv(ContainerIdVar) is not empty then
-	// LodDir = path.Join(LogDir, os.Getenv(ContainerIdVar))
-	ContainerIdVarName string `json:"container_id_var_name,omitempty"` // switch to NONE to not put log files to a separate directory
 	// if we want to print goroutine id with each log message
 	UseTid *bool `json:"use_tid,omitempty"`
 	// time format to use
@@ -40,7 +35,6 @@ func defaultConfig() Config {
 	return Config{
 		LogLevel:           99,
 		LogDir:             "",
-		ContainerIdVarName: "HOSTNAME",
 		UseTid:             &useTid,
 		TimeFormat:         "2006/Jan/02 15:04:05",
 		LogFileFormat:      "02_Jan_2006_15_04_05.jsonl",
