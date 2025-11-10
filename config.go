@@ -1,6 +1,10 @@
 package logr
 
-import "github.com/meeeraaakiii/go-tintlog/color"
+import (
+	"os"
+
+	"github.com/meeeraaakiii/go-tintlog/color"
+)
 
 // user config set through a config file (logger section)
 type Config struct {
@@ -47,30 +51,30 @@ func defaultConfig() Config {
 func InitializeConfig(userConfig *Config) {
 	// If not provided - just use defaultConfig
 	if userConfig == nil {
-		Log(Info, color.Green, "%s config is %s, keeping %s", "logger", "not provided", "default logger config")
+		Log(Notice, color.PurpleBold, "%s config is %s, keeping %s", "logger", "not provided", "default logger config")
 		return
 	}
-	Log(Info, color.Green, "%s config was %s, using %s", "logger", "provided", "user config")
-	// If local Config is provided - use it
-	Cfg = *userConfig
+	Log(Notice, color.GreenBold, "%s config was %s, using %s", "logger", "provided", "user config")
 
 	// apply defaults for every missing value
-	defaultConfig := defaultConfig()
-	ApplyDefaults(&Cfg, defaultConfig, func(field string, defVal any) {
+	ApplyDefaults(userConfig, Cfg, func(field string, defVal any) {
 		Log(
-			Info, color.Green,
+			Info, color.Purple,
 			"%s field is %s in %s configuration. Using default value: %v",
 			field, "missing", "logger", PrettyForStderr(defVal),
 		)
 	})
 
-	Log(Info, color.Green, "%s: %s", "Effective config", Cfg)
+	// use user config after applying defaults
+	Cfg = *userConfig
+	Log(Info, color.DimGreen, "%s: %s", "Effective config", Cfg)
 
 	if Cfg.LogDir != "" {
 		// this function will change Cfg.LoggerFilePath and Cfg.LoggerFile
 		err, errMsg := OpenLoggerFile(Cfg.LogDir)
 		if err != nil {
 			Log(Info, color.Red, "Err: '%s', errMsg: '%s'", err, errMsg)
+			os.Exit(1)
 		}
 	}
 }
