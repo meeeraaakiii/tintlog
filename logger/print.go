@@ -10,7 +10,7 @@ import (
 // LogJSON prints a labeled JSON block using the standard format.
 // Example:
 //   LogJSON(tl.Info, palette.CyanDim, "description", value)
-func LogJSON(level LogLevel, colorize palette.Colorizer, title string, value string) {
+func LogJSON(level LogLevel, colorize palette.Colorizer, title string, value any) {
 	Log(level, colorize, "%s (JSON):\n'''\n%s\n'''", title, value)
 }
 
