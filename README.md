@@ -13,3 +13,4 @@ messages to terminals while keeping **file output uncolored** for machines and p
 - A clear, editor-friendly color palette (hex strings) with base, Bright, and Dim variants.
 - A lightweight colorizer registry for consistent styles across your app.
 - Utilities for pretty/compact value rendering and safe argument sanitization.
+- Dockerfile and docker-compose.yml files to test colors with docker-compose up
