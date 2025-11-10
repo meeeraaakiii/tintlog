@@ -9,9 +9,9 @@ import (
 
 // LogJSON prints a labeled JSON block using the standard format.
 // Example:
-//   LogJSON(tl.Info, palette.CyanDim, "Effective User Config", jsonString)
-func LogJSON(level LogLevel, colorize palette.Colorizer, title string, jsonString string) {
-	Log(level, colorize, "%s (JSON):\n'''\n%s\n'''", title, jsonString)
+//   LogJSON(tl.Info, palette.CyanDim, "description", value)
+func LogJSON(level LogLevel, colorize palette.Colorizer, title string, value string) {
+	Log(level, colorize, "%s (JSON):\n'''\n%s\n'''", title, value)
 }
 
 // LogRewrite writes a line prefixed with \r and WITHOUT a trailing newline,
