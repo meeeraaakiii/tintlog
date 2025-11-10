@@ -1,40 +1,40 @@
 package color
 
-// Base hues
+// Base hues (moderate contrast, soothing)
 const (
 	WhiteColor  = "#ffffff"
 	BlackColor  = "#000000"
 
-	RedColor    = "#ff0000"
-	OrangeColor = "#ffa500"
-	YellowColor = "#ffff00"
-	GreenColor  = "#00ff00"
-	CyanColor   = "#00ffff"
-	BlueColor   = "#0000ff"
-	PurpleColor = "#800080"
-	GrayColor   = "#808080"
+	RedColor    = "#d84f4f"
+	OrangeColor = "#e07f2f"
+	YellowColor = "#d1b832"
+	GreenColor  = "#46a65f"
+	CyanColor   = "#3aa6b5"
+	BlueColor   = "#5476cb"
+	PurpleColor = "#8d5ec3"
+	GrayColor   = "#80858f"
 )
 
-// Bright tints (lighter)
+// Bright tints (lighter, same hue family)
 const (
-	BrightRedColor    = "#ff6666"
-	BrightOrangeColor = "#ffbd66"
-	BrightYellowColor = "#ffff99"
-	BrightGreenColor  = "#66ff66"
-	BrightCyanColor   = "#66ffff"
-	BrightBlueColor   = "#6666ff"
-	BrightPurpleColor = "#b266b2"
-	BrightGrayColor   = "#c0c0c0"
+	BrightRedColor    = "#f19a9a"
+	BrightOrangeColor = "#f1b77c"
+	BrightYellowColor = "#ece08a"
+	BrightGreenColor  = "#90d0a6"
+	BrightCyanColor   = "#8fd0d8"
+	BrightBlueColor   = "#a1b6e8"
+	BrightPurpleColor = "#c4a6e4"
+	BrightGrayColor   = "#bcc1c9"
 )
 
-// Dim shades (darker)
+// Dim shades (darker, same hue family)
 const (
-	DimRedColor    = "#990000"
-	DimOrangeColor = "#995a00"
-	DimYellowColor = "#999900"
-	DimGreenColor  = "#006600"
-	DimCyanColor   = "#006666"
-	DimBlueColor   = "#000066"
-	DimPurpleColor = "#4d004d"
-	DimGrayColor   = "#404040"
+	DimRedColor    = "#8f3434"
+	DimOrangeColor = "#9a5c24"
+	DimYellowColor = "#948826"
+	DimGreenColor  = "#316f45"
+	DimCyanColor   = "#2a707a"
+	DimBlueColor   = "#3a528a"
+	DimPurpleColor = "#5f4285"
+	DimGrayColor   = "#565b64"
 )
